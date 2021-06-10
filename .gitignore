@@ -1,0 +1,18 @@
+
+# archivo secreto
+secret.json
+
+#archivos de cache
+/crm_project/__pycache__
+/crm_project/settings/__pycache__
+
+/users/__pycache__
+/users/migrations/__pycache__
+
+/products/__pycache__
+/products/migrations/__pycache__
+
+/sell/__pycache__
+/sell/migrations/__pycache__
+
+/utils/__pycache__
