@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'treebeard',
+    'simple_history',
 
     #own apps
     'users',
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware', #simple history app
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -91,6 +93,8 @@ WSGI_APPLICATION = 'crm_project.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL= 'users.UserModel'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

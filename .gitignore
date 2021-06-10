@@ -9,10 +9,10 @@ secret.json
 /users/__pycache__
 /users/migrations/__pycache__
 
-/products/__pycache__
-/products/migrations/__pycache__
+/business_projects/__pycache__
+/business_projects/migrations/__pycache__
 
-/sell/__pycache__
-/sell/migrations/__pycache__
+/contability/__pycache__
+/contability/migrations/__pycache__
 
 /utils/__pycache__
