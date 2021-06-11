@@ -1,17 +1,19 @@
 import uuid
 
 from django.db import models
+from django.db.models.signals import post_save
 
 from simple_history.models import HistoricalRecords
 
-from users.employ_models import EmployModel
+#from users.employ_models import EmployModel
+from .signals import reduce_stock
 
 class ProjectModel(models.Model):
     code = models.CharField(max_length=100, primary_key=True)
     name = models.CharField(max_length=100)
     supplies = models.ManyToManyField('SupplyModel')
     inventory = models.ManyToManyField('InventoryModel')
-    employess = models.ManyToManyField(EmployModel)
+    employess = models.ManyToManyField('users.EmployModel')
 
     history = HistoricalRecords()
 
@@ -62,3 +64,9 @@ class ProductModel(models.Model):
 
     def __str__(self):
         return f'{self.name}| stock:{self.stock} | id: {self.pk} '
+
+
+
+
+
+post_save.connect(reduce_stock,sender=SupplyModel)

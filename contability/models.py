@@ -49,19 +49,6 @@ class BillModel(models.Model):
 
     history = HistoricalRecords()
     class Meta:
-        verbose_name = 'Orden de venta (factura)'
-        verbose_name_plural = 'Ordenes de venta (facturas)'
-
-    def __str__(self):
-        return f'| id: {self.pk} '
-
-class BillModel(models.Model):
-    final_price=models.DecimalField(max_digits=10, decimal_places=2)
-    final_discounts=models.DecimalField(max_digits=8, decimal_places=2)
-    quantity=models.SmallIntegerField()
-
-    history = HistoricalRecords()
-    class Meta:
         verbose_name = 'Concepto de venta (factura)'
         verbose_name_plural = 'Conceptos de venta (facturas)'
 
