@@ -11,6 +11,7 @@ from .utils import get_document_choices
 class RoleModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50,unique=True)
+
     history = HistoricalRecords()
     class Meta:
         verbose_name = 'Rol (grupo)'
@@ -27,6 +28,7 @@ class UserModel(AbstractUser):
     is_client = models.BooleanField(default=False)
     nationality = CountryField(blank_label='(seleccione su pais de nacimiento)')
     birth_date = models.DateField(auto_now=False, auto_now_add=False)
+    
     history = HistoricalRecords()
     
     REQUIRED_FIELDS = ['email','roles','first_name','last_name','identification_document_type',
