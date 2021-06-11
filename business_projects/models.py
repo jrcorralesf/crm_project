@@ -1,12 +1,12 @@
 import uuid
 
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import m2m_changed
 
 from simple_history.models import HistoricalRecords
 
 #from users.employ_models import EmployModel
-from .signals import reduce_stock
+#from .signals import reduce_stock
 
 class ProjectModel(models.Model):
     code = models.CharField(max_length=100, primary_key=True)
@@ -37,6 +37,8 @@ class SupplyModel(models.Model):  #al crear un insumo se disminuye el stock
 
     def __str__(self):
         return f'| id: {self.pk} '
+
+    
 
 class InventoryModel(models.Model):
     code = models.CharField(max_length=100, primary_key=True)
@@ -69,4 +71,4 @@ class ProductModel(models.Model):
 
 
 
-post_save.connect(reduce_stock,sender=SupplyModel)
+#m2m_changed.connect(reduce_stock,sender=SupplyModel.products.through)
