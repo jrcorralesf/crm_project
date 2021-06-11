@@ -3,6 +3,8 @@
 secret.json
 
 #archivos de cache
+#**[0-9999]initial.py
+
 /crm_project/__pycache__
 /crm_project/settings/__pycache__
 

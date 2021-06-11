@@ -8,6 +8,6 @@ router = DefaultRouter()
 
 # En el router vamos añadiendo los endpoints a los viewsets
 router.register(r'roles', RoleViewSet, basename='roles_router')
-router.register(r'user/registratoon', UserRegistrationViewSet, basename='user_registration_router')
+router.register(r'user/registration', UserRegistrationViewSet, basename='user_registration_router')
 
 urlpatterns = router.urls

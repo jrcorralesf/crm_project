@@ -28,10 +28,11 @@ class UserModel(AbstractUser):
     is_client = models.BooleanField(default=False)
     nationality = CountryField(blank_label='(seleccione su pais de nacimiento)')
     birth_date = models.DateField(auto_now=False, auto_now_add=False)
+    photo=models.FileField()
     
     history = HistoricalRecords()
     
-    REQUIRED_FIELDS = ['email','roles','first_name','last_name','identification_document_type',
+    REQUIRED_FIELDS = ['email','first_name','last_name','identification_document_type',
                 'number_of_identification','nationality','birth_date']
     #USERNAME_FIELD = 'username' # por defecto es username (no pueden haber 2 repetidos)
         
