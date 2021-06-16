@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'treebeard',
     'simple_history',
-    'storages',
+    #'storages',
 
     #own apps
     'users',

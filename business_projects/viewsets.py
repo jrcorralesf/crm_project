@@ -4,6 +4,7 @@ from rest_framework.response import Response
 
 from .serializers import ProductSerializer, SupplySerializer
 from .models import ProductModel, SupplyModel
+from .azure_files_services import upload_file
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = ProductModel.objects.all()
@@ -11,12 +12,13 @@ class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
     
-    '''def create(self, request, *args, **kwargs): #proceso para guardar el archivo subido dentro del Azure files
+    def create(self, request, *args, **kwargs): 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-
+        #proceso para guardar el archivo subido dentro del Azure files
         photo_validated=serializer.validated_data['photo']
+        upload_file(photo_validated)
         
 
 
@@ -26,12 +28,13 @@ class ProductViewSet(viewsets.ModelViewSet):
             name = serializer.validated_data['name'],
             cost = serializer.validated_data['cost'],
             stock = serializer.validated_data['stock'],
-            #photo= #Guardar la Url al Filshare
+            #photo= 'null' #PONER URL DE AZURE
         )
         product.save()
 
-        headers = self.get_success_headers(product)
-        return Response(product, status=status.HTTP_201_CREATED, headers=headers)'''
+        return Response('Producto almacenado en Azure Files correctamente')
+        #headers = self.get_success_headers(product)
+        #return Response(product, status=status.HTTP_201_CREATED, headers=headers)
 
 class SupplyViewSet(viewsets.ModelViewSet):
     queryset = SupplyModel.objects.all()
