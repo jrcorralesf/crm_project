@@ -10,6 +10,29 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     permission_classes = [AllowAny]
 
+    
+    '''def create(self, request, *args, **kwargs): #proceso para guardar el archivo subido dentro del Azure files
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+
+        photo_validated=serializer.validated_data['photo']
+        
+
+
+        #alternativa para guardar ProductModel.objects.create()
+        product=ProductModel(
+            code = serializer.validated_data['code'],
+            name = serializer.validated_data['name'],
+            cost = serializer.validated_data['cost'],
+            stock = serializer.validated_data['stock'],
+            #photo= #Guardar la Url al Filshare
+        )
+        product.save()
+
+        headers = self.get_success_headers(product)
+        return Response(product, status=status.HTTP_201_CREATED, headers=headers)'''
+
 class SupplyViewSet(viewsets.ModelViewSet):
     queryset = SupplyModel.objects.all()
     serializer_class = SupplySerializer

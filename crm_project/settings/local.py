@@ -25,6 +25,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 AZURE_CONTAINER='contenedor-blob'
 AZURE_CONNECTION_STRING='DefaultEndpointsProtocol=https;AccountName=crminteredes;AccountKey=uy4MdNj6/Vv1tNFxdSaHC3sVqSmeuQ2Yx7pR5J3M09iE7ivG5iHQQtYYgJ9Fp5f5NJvTPN11sTnfYuA1Mi+8pQ==;EndpointSuffix=core.windows.net'
 AZURE_CACHE_CONTROL = "public,max-age=31536000,immutable"
+AZURE_LOCATION='miempresa'  #carpeta base
 #AZURE_ACCOUNT_NAME='crminteredes'
 #AZURE_ACCOUNT_KEY='uy4MdNj6/Vv1tNFxdSaHC3sVqSmeuQ2Yx7pR5J3M09iE7ivG5iHQQtYYgJ9Fp5f5NJvTPN11sTnfYuA1Mi+8pQ=='
 #AZURE_SSL=True
