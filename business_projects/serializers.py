@@ -7,7 +7,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     class Meta:
         model=ProductModel
-        fields=['code','name','cost','stock']
+        fields=['code','name','cost','stock','photo']
 
 class SupplySerializer(serializers.ModelSerializer):
     #products=ProductSerializer(many=True) #para ver los detalles en el listado

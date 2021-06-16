@@ -58,6 +58,7 @@ class ProductModel(models.Model):
     name = models.CharField(max_length=100)
     cost = models.DecimalField(max_digits=12, decimal_places=2)
     stock = models.PositiveIntegerField()
+    photo=models.FileField()
 
     history = HistoricalRecords()
     class Meta:

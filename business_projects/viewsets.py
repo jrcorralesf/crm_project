@@ -8,7 +8,7 @@ from .models import ProductModel, SupplyModel
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = ProductModel.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
 class SupplyViewSet(viewsets.ModelViewSet):
     queryset = SupplyModel.objects.all()
