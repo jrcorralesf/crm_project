@@ -1,13 +1,12 @@
 from rest_framework import serializers
 
 from .models import ProductModel, SupplyModel
-from .utils import ArrayOfCodesSerializer, ArrayOfNumberSerializer
 
 class ProductSerializer(serializers.ModelSerializer):
-    
+    path = serializers.CharField(max_length=50, required=False)
     class Meta:
         model=ProductModel
-        fields=['code','name','cost','stock','photo']
+        fields=['code','name','cost','stock','photo','path']
 
 class SupplySerializer(serializers.ModelSerializer):
     #products=ProductSerializer(many=True) #para ver los detalles en el listado

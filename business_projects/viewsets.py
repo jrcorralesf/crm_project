@@ -18,10 +18,9 @@ class ProductViewSet(viewsets.ModelViewSet):
 
         #proceso para guardar el archivo subido dentro del Azure files
         photo_validated=serializer.validated_data['photo']
-        upload_file(photo_validated)
+        path=serializer.validated_data['path']
+        upload_file(photo_validated,path)
         
-
-
         #alternativa para guardar ProductModel.objects.create()
         product=ProductModel(
             code = serializer.validated_data['code'],
