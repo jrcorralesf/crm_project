@@ -13,24 +13,25 @@ share = ShareClient.from_connection_string(conn_str=connection_string, share_nam
 #directory=ShareDirectoryClient(conn_str=connection_string, share_name=share_supply)
 
 
-def download_file(path,filename):
+def download_file(path):
     try:
-        
-        file_client = ShareFileClient.from_connection_string(
-            connection_string, share_supply, path)
-        dest_file_name = "DOWNLOADED-" + filename
-        with open(dest_file_name, "wb") as data:
-            stream = file_client.download_file()
-            data.write(stream.readall())
-            #stream.readinto(data)
-
+        if path:
+            filename=os.path.basename(path)
+            print('//////////////////////////////')
+            print(filename)
+            file_client = ShareFileClient.from_connection_string(connection_string, share_supply, path)
+            dest_file_name = "DOWNLOADED-" + filename
+            with open(dest_file_name, "wb") as data:
+                stream = file_client.download_file()
+                data.write(stream.readall())
+                #stream.readinto(data)
+        else:
+            print("No especificó el archivo a descargar")
     except ResourceNotFoundError:
         print("Archivo no encontrado")
 
 def upload_file(my_file,path):
-
     if my_file: #si hay un archivo
-        
         if path: #si hay algo en mi lista de path
             path_array=os.path.normpath(path).split(os.sep)
             print('//////////////////////////////')
@@ -46,13 +47,17 @@ def upload_file(my_file,path):
                     parent_path=sub_pht
             except ResourceExistsError:
                 print("Ya existían las carpetas")
-                
         
-        file_client = ShareFileClient.from_connection_string(conn_str=connection_string, 
+        azure_path = f'{path}{my_file.name}'
+        file_to_upload=share.get_file_client(azure_path)
+        file_to_upload.upload_file(my_file)
+
+        #Alternativa de guardado usando el ShareFileClient
+        '''file_client = ShareFileClient.from_connection_string(conn_str=connection_string, 
                                                             share_name=share_supply, 
-                                                            file_path=f'{path}{my_file.name}'
+                                                            file_path=azure_path
                                                             )
-        file_client.upload_file(my_file)
-        download_file(f'{path}{my_file.name}', my_file.name)
+        file_client.upload_file(my_file)'''
+        download_file(azure_path) #Probando
 
 
