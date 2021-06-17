@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import ProductModel, SupplyModel
 
 class ProductSerializer(serializers.ModelSerializer):
-    path = serializers.CharField(max_length=50, required=False)
+    path = serializers.CharField(max_length=50, default='')
     class Meta:
         model=ProductModel
         fields=['code','name','cost','stock','photo','path']
